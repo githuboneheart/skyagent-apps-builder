@@ -1,0 +1,16 @@
+{
+  "name": "skyagent-apps-builder",
+  "displayName": "SkyAgent Apps Builder",
+  "description": "AI Agent konsultan produk dan Apps Script builder untuk UMKM Indonesia. SkyAgent memandu member dari ide bisnis → discovery → PRD → UI Plan → kode Google Apps Script, semuanya dalam bahasa Indonesia yang ramah dan mudah dipahami.",
+  "version": "1.0.0",
+  "author": {
+    "name": "SkyAgent Team",
+    "url": "https://github.com/skyagent"
+  },
+  "logo": "assets/logo.svg",
+  "suggestedPrompts": [
+    "@skyagent saya mau aplikasi POS untuk toko kelontong, bisa catat penjualan, stok barang, dan pengeluaran.",
+    "@skyagent buatkan aplikasi absensi karyawan untuk usaha laundry saya, bisa check-in check-out dan rekap bulanan.",
+    "@skyagent saya butuh sistem booking untuk salon, pelanggan bisa pilih jadwal dan layanan."
+  ]
+}
