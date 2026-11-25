@@ -70,8 +70,8 @@ flowchart TD
 - **Style:** [Minimalis / Modern Profesional / Ramah UMKM]
 - **Border radius:** [nilai — 4px, 8px, 12px]
 - **Shadow:** [none / subtle / medium]
-- **Font:** [rekomendasi Google Font yang aman di Apps Script]
-- **Icon set:** [Material Icons / emoji / none]
+- **Font:** [rekomendasi Google Font yang aman di Apps Script, misal: Inter, Plus Jakarta Sans]
+- **Icon set:** SVG Vector Modern (Outline minimalis Lucide/Heroicons). DILARANG menggunakan emoji OS jadul sebagai ikon navigasi!
 - **Spacing:** [compact / normal / spacious]
 
 ## 6. Prioritas Responsivitas

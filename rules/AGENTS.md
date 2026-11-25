@@ -30,6 +30,13 @@
 - Dengan memanggil tool `ask_question`, Antigravity akan otomatis menampilkan pop-up / kartu pilihan interaktif sehingga member tinggal klik opsi yang diinginkan tanpa harus mengetik panjang.
 - Setiap pertanyaan di `ask_question` harus memiliki 3-5 opsi jawaban yang relevan, dengan opsi terbaik diawali label `(Recommended)`. Antigravity secara otomatis menyediakan opsi "Other" jika member ingin mengetik jawaban sendiri.
 
+## Standar UI & Desain Modern (WAJIB)
+
+- **DILARANG menggunakan emoji OS sebagai ikon utama UI** (seperti `🏷️`, `📜`, `🍲`, `📊`, `⚙️`, `🚪`, `🚀` pada menu/sidebar/tombol).
+- **SELALU gunakan Icon SVG Vector modern** (gaya outline minimalis ala Lucide/Heroicons/Tabler) yang tajam, rapi, dan konsisten di semua perangkat (HP & PC).
+- **Halaman Login Wajib Fullscreen & Terkunci (Auth Wall)**: Jika aplikasi memiliki sistem login, sidebar, navbar, bottom bar, dan menu aplikasi HARUS disembunyikan total sebelum user berhasil login (`body.is-guest`). User tidak boleh bisa mengintip atau mengeklik menu aplikasi sebelum login!
+- **Batasan Meta Tag Apps Script**: Pada fungsi `doGet()` di `Code.gs`, HANYA gunakan `.addMetaTag('viewport', 'width=device-width, initial-scale=1.0')`. DILARANG menambahkan meta tag lain seperti `theme-color` karena akan memicu error fatal di Google Apps Script.
+
 ## Referensi UI
 
 - JANGAN menyalin desain, logo, warna, konten, atau identitas visual dari aplikasi lain secara identik.

@@ -24,6 +24,7 @@ Memeriksa seluruh kode, struktur database, UI, dan kesiapan deployment sebelum a
   - [ ] include() helper tersedia
   - [ ] Routing mencakup semua halaman di PRD
   - [ ] Error handling untuk page yang tidak ditemukan
+  - [ ] Hanya gunakan .addMetaTag('viewport', ...), TIDAK menambahkan theme-color atau meta tag ilegal lainnya
 
 □ Setup.gs
   - [ ] Semua sheet dari PRD bagian 10 dibuat
@@ -70,6 +71,8 @@ Memeriksa seluruh kode, struktur database, UI, dan kesiapan deployment sebelum a
   - [ ] Google Fonts ter-load
   - [ ] include() untuk Style, Script, Components berfungsi
   - [ ] Loading state saat halaman dimuat
+  - [ ] Menggunakan Icon SVG Vector modern (bukan emoji OS kartun) untuk navigasi & tombol
+  - [ ] Halaman login fullscreen murni (sidebar & navigasi aplikasi tersembunyi total sebelum login)
 
 □ Style.html
   - [ ] Palet warna sesuai UI Plan
@@ -79,6 +82,7 @@ Memeriksa seluruh kode, struktur database, UI, dan kesiapan deployment sebelum a
   - [ ] Tidak ada hardcoded pixel yang merusak di mobile
   - [ ] Form element styled konsisten
   - [ ] Table responsive (scroll horizontal di mobile)
+  - [ ] Rule body.is-guest menyembunyikan sidebar, topbar, dan navbar saat belum login
 
 □ Script.html
   - [ ] google.script.run digunakan untuk panggil server
@@ -88,6 +92,7 @@ Memeriksa seluruh kode, struktur database, UI, dan kesiapan deployment sebelum a
   - [ ] Konfirmasi sebelum hapus data
   - [ ] Form validation di client-side
   - [ ] Navigasi antar halaman berfungsi
+  - [ ] switchPage() mencegah akses halaman kasir/admin sebelum user berhasil login
 
 □ Components.html
   - [ ] Modal component berfungsi (open/close)

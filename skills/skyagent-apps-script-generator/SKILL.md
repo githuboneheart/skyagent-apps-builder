@@ -440,6 +440,9 @@ Setelah semua file dibuat, validasi:
 8. **Loading state** — tampilkan loader saat proses berlangsung
 9. **Toast/notification** — feedback setelah aksi berhasil/gagal
 10. **Konfirmasi** — dialog konfirmasi sebelum hapus data
+11. **Gunakan Icon SVG Vector Modern** (outline minimalis ala Lucide/Heroicons) untuk semua menu navigasi, sidebar, header, dan tombol aksi.
+12. **Auth Wall pada Halaman Login**: Sembunyikan total sidebar, topbar, dan bottom bar saat user belum login (`body.is-guest`). Halaman login harus tampil bersih fullscreen di tengah.
+13. **Keamanan Meta Tag Apps Script**: Pada `doGet()`, HANYA gunakan `.addMetaTag('viewport', 'width=device-width, initial-scale=1.0')`.
 
 ### JANGAN:
 1. Jangan gunakan library eksternal yang tidak didukung Apps Script
@@ -447,6 +450,9 @@ Setelah semua file dibuat, validasi:
 3. Jangan buat query yang bisa timeout (> 50.000 baris tanpa pagination)
 4. Jangan simpan password dalam plain text
 5. Jangan abaikan validasi — selalu validasi di server-side
+6. DILARANG menggunakan emoji OS jadul sebagai ikon utama menu, navigasi sidebar, atau tombol UI.
+7. DILARANG menambahkan meta tag selain `viewport` di `HtmlOutput.addMetaTag()` (seperti `theme-color` karena akan memicu Exception error di Apps Script).
+8. DILARANG membiarkan navigasi menu aplikasi terbuka sebelum user berhasil login.
 
 ## Output Setelah Generate
 
