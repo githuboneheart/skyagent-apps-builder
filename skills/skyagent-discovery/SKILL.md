@@ -20,93 +20,96 @@ Menggali kebutuhan member secara bertahap dan terstruktur, tanpa membuat member 
 4. **Transparan** — Jelaskan mengapa informasi ini penting.
 5. **Fleksibel** — Biarkan member menambah, menghapus, atau mengubah jawaban.
 
-## Alur Discovery
+## Alur Discovery & Mekanisme Pop-up (WAJIB)
 
-### Putaran 1: Pemahaman Bisnis
+> [!IMPORTANT]
+> **JANGAN ketik pertanyaan discovery hanya sebagai teks biasa di chat!**
+> SkyAgent **WAJIB** memanggil tool `ask_question` agar pertanyaan muncul sebagai dialog pop-up / kartu pilihan interaktif di antarmuka Antigravity. Member cukup klik pilihan yang tersedia tanpa harus mengetik panjang.
 
-Setelah menerima ide awal member, identifikasi dan tanyakan:
+### Putaran 1: Pemahaman Bisnis (Gunakan `ask_question`)
 
+Setelah menerima ide awal, panggil tool `ask_question` dengan 3-5 pertanyaan terstruktur. Contoh payload `ask_question` untuk Template POS UMKM:
+
+```json
+{
+  "questions": [
+    {
+      "question": "Bisnis Kakak bergerak di bidang apa & apakah ada variasi produk?",
+      "options": [
+        "(Recommended) Toko Kelontong / Sembako / Ritel (banyak barang satuan)",
+        "Cafe / Resto / Makanan & Minuman (ada varian rasa/porsi)",
+        "Toko Pakaian / Fashion / Butik (ada varian ukuran & warna)",
+        "Jasa (Salon, Barbershop, Bengkel, Laundry)",
+        "Kios Pulsa / Aksesoris / Counter"
+      ],
+      "is_multi_select": false
+    },
+    {
+      "question": "Siapa yang akan mengoperasikan kasir di toko?",
+      "options": [
+        "(Recommended) Saya sendiri dibantu karyawan (butuh role Kasir & Admin)",
+        "Hanya saya sendiri (single user / pemilik)",
+        "Beberapa staf/karyawan dengan shift bergantian"
+      ],
+      "is_multi_select": false
+    },
+    {
+      "question": "Perangkat utama yang digunakan di meja kasir saat melayani pembeli?",
+      "options": [
+        "(Recommended) Smartphone / HP Android (layar sentuh, praktis)",
+        "Laptop / Komputer PC meja kasir",
+        "Tablet / iPad"
+      ],
+      "is_multi_select": false
+    },
+    {
+      "question": "Metode pembayaran apa saja yang disediakan untuk pembeli?",
+      "options": [
+        "(Recommended) Tunai & QRIS / Transfer Bank",
+        "Hanya pembayaran Tunai",
+        "Tunai, QRIS, & Kasbon / Catatan Hutang Pelanggan",
+        "Lengkap (Tunai, QRIS, Transfer, Debit/Kredit, Kasbon)"
+      ],
+      "is_multi_select": false
+    },
+    {
+      "question": "Apa kendala pencatatan terbesar saat ini yang ingin diselesaikan?",
+      "options": [
+        "(Recommended) Stok sering selisih & sering lupa sisa barang",
+        "Rekap omzet harian & laba kotor ribet/manual",
+        "Sering lupa harga modal (HPP) & harga jual barang",
+        "Catatan kasbon pelanggan sering hilang/tercecer"
+      ],
+      "is_multi_select": false
+    }
+  ]
+}
 ```
-🔍 **Pertanyaan Discovery — Putaran 1**
 
-Supaya aplikasi ini benar-benar cocok untuk bisnis Kakak, saya perlu tahu beberapa hal:
+### Putaran 2: Detail Fitur (Gunakan `ask_question`)
 
-1. **Tentang bisnis Kakak:**
-   Bisnis Kakak bergerak di bidang apa? Sudah berapa lama berjalan?
-   (Ini penting supaya fitur dan istilah di aplikasi sesuai dengan bisnis Kakak)
+Berdasarkan jawaban putaran 1, panggil tool `ask_question` lagi untuk memperdalam fitur spesifik (maksimal 3-4 pertanyaan). Misalnya tentang diskon, cetak struk, atau laporan keuangan.
 
-2. **Siapa yang akan pakai aplikasi ini?**
-   Hanya Kakak sendiri, atau ada karyawan/tim yang ikut pakai?
-   Kalau ada tim, berapa orang dan apa perannya?
-   (Ini menentukan apakah perlu sistem role/akses)
+### Putaran 3: Konfirmasi Ringkasan & Rekomendasi
 
-3. **Masalah utama saat ini:**
-   Apa kesulitan terbesar yang Kakak hadapi sekarang yang ingin diselesaikan oleh aplikasi ini?
-   (Supaya saya bisa prioritaskan fitur yang paling dibutuhkan)
+Tampilkan ringkasan teks di chat, lalu panggil tool `ask_question` untuk konfirmasi:
 
-4. **Perangkat yang digunakan:**
-   Kakak lebih sering pakai HP atau laptop untuk kerja?
-   (Ini menentukan prioritas desain — mobile-first atau desktop-first)
-
-5. **Sudah pernah pakai aplikasi serupa?**
-   Kalau sudah, apa yang suka dan tidak suka dari aplikasi tersebut?
-   (Supaya saya bisa hindari kekurangan yang sama)
+```json
+{
+  "questions": [
+    {
+      "question": "Apakah Kakak setuju dengan ringkasan fitur wajib & opsional di atas?",
+      "options": [
+        "(Recommended) Setuju semua, lanjut ke tahap Referensi UI!",
+        "Mau tambah fitur baru",
+        "Mau kurangi/hapus beberapa fitur",
+        "Ada fitur yang perlu disesuaikan"
+      ],
+      "is_multi_select": false
+    }
+  ]
+}
 ```
-
-### Putaran 2: Detail Fitur
-
-Berdasarkan jawaban putaran 1, tanyakan lebih detail:
-
-```
-🔍 **Pertanyaan Discovery — Putaran 2**
-
-Terima kasih jawabannya, Kak! Sekarang saya mau pastikan fitur-fiturnya tepat:
-
-1. **[Pertanyaan spesifik tentang fitur utama berdasarkan jenis bisnis]**
-
-2. **[Pertanyaan tentang data/laporan yang dibutuhkan]**
-
-3. **[Pertanyaan tentang alur kerja harian]**
-```
-
-### Putaran 3: Konfirmasi & Rekomendasi
-
-Setelah cukup informasi, berikan ringkasan:
-
-```
-📋 **Ringkasan Discovery**
-
-Berdasarkan informasi dari Kakak, berikut yang sudah saya pahami:
-
-**Jenis Aplikasi:** [...]
-**Masalah Bisnis:** [...]
-**Target Pengguna:** [...]
-**Tujuan Utama:** [...]
-
-**✅ Fitur Wajib (Harus Ada):**
-1. [fitur] — [alasan]
-2. [fitur] — [alasan]
-3. ...
-
-**💡 Fitur Opsional (Bisa Ditambahkan):**
-1. [fitur] — [alasan dan manfaat]
-2. [fitur] — [alasan dan manfaat]
-3. ...
-
-**⚠️ Hal Penting yang Perlu Diperhatikan:**
-- [risiko/batasan/asumsi]
-- [hal yang belum dipikirkan member]
-
-**🚫 Fitur yang TIDAK Disarankan untuk Tahap Awal:**
-- [fitur] — [alasan: terlalu kompleks / tidak prioritas]
-
----
-
-Kakak bisa:
-- ✅ Setuju dengan daftar ini
-- ➕ Tambah fitur
-- ➖ Hapus fitur
-- ✏️ Ubah fitur
 
 Silakan beri tahu pendapat Kakak! 😊
 ```

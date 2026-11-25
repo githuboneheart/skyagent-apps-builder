@@ -15,109 +15,51 @@ Menganalisis referensi tampilan UI dari member dan mengekstrak elemen desain yan
 
 ## Alur Analisis
 
-### Langkah 1: Terima Referensi
+### Langkah 1: Tanyakan Referensi UI (Gunakan `ask_question`)
 
-Member bisa memberikan referensi dalam 3 cara:
+Panggil tool `ask_question` untuk menanyakan referensi tampilan kepada member:
+
+```json
+{
+  "questions": [
+    {
+      "question": "Apakah Kakak memiliki referensi tampilan UI yang disukai?",
+      "options": [
+        "(Recommended) Belum punya referensi (SkyAgent buatkan 3 pilihan gaya UI)",
+        "Saya punya screenshot/foto UI yang disukai (akan saya lampirkan)",
+        "Saya punya link referensi (Pinterest / Dribbble / Behance / Web lain)"
+      ],
+      "is_multi_select": false
+    }
+  ]
+}
+```
+
+### Langkah 2: Analisis atau Pemilihan Gaya UI
 
 #### Opsi A: Screenshot / Foto
-Jika member melampirkan gambar, analisis aspek berikut:
-
-```
-🎨 **Analisis Referensi UI**
-
-Saya sudah melihat referensi yang Kakak kirim. Berikut yang saya tangkap:
-
-**📐 Layout & Struktur:**
-- Tipe layout: [sidebar + content / tab navigation / single page / dll]
-- Grid system: [card grid / list / tabel / dll]
-- Navigasi utama: [top bar / sidebar / bottom nav / dll]
-- Responsive hint: [terlihat mobile-friendly / desktop-focused / dll]
-
-**🎨 Warna:**
-- Warna utama (primary): [warna + hex jika bisa diidentifikasi]
-- Warna aksen (accent): [warna]
-- Warna background: [warna]
-- Skema keseluruhan: [light mode / dark mode / mixed]
-- Kontras: [tinggi / sedang / rendah]
-
-**🔤 Tipografi:**
-- Heading: [style — bold, besar, sans-serif / dll]
-- Body text: [style]
-- Kesan umum: [modern / klasik / playful / dll]
-
-**🧩 Komponen UI yang Terlihat:**
-- [ ] Dashboard/overview card
-- [ ] Form input
-- [ ] Tabel data
-- [ ] Tombol aksi (CTA)
-- [ ] Modal/dialog
-- [ ] Chart/grafik
-- [ ] Sidebar menu
-- [ ] Search bar
-- [ ] Status badge/tag
-- [ ] Avatar/profile
-- [ ] Notification
-- [ ] Tab navigation
-
-**🔄 Alur Pengguna yang Terlihat:**
-- [deskripsi alur yang bisa diidentifikasi dari screenshot]
-
-**📱 Kesesuaian Mobile/Desktop:**
-- [analisis responsivitas]
-
-**✨ Fitur yang Terlihat dari Referensi:**
-- [fitur-fitur yang teridentifikasi dari tampilan]
-
-**💡 Yang Bisa Kita Adopsi (sebagai inspirasi):**
-- [elemen yang cocok untuk aplikasi member]
-
-**⚠️ Yang TIDAK Akan Kita Salin:**
-- Logo, brand identity, dan warna exact dari referensi
-- Konten dan data dari referensi
-- Layout yang terlalu kompleks untuk Apps Script
-```
+Jika member melampirkan gambar, analisis aspek layout, warna, tipografi, dan komponen.
 
 #### Opsi B: Link Pinterest / Dribbble / Behance
-Jika member mengirim link:
-1. Buka dan analisis halaman referensi tersebut.
-2. Jika tidak bisa diakses, minta member mengirim screenshot.
-3. Lakukan analisis yang sama seperti Opsi A.
-4. Catat URL sumber sebagai referensi.
+Jika member mengirim link, buka dan analisis referensi tersebut.
 
-#### Opsi C: Tidak Punya Referensi
-Jika member tidak punya referensi, tawarkan 3 pilihan gaya:
+#### Opsi C: Tidak Punya Referensi (Tampilkan 3 Gaya via `ask_question`)
+Jika member memilih tidak punya referensi, tampilkan ringkasan gaya di teks dan panggil tool `ask_question`:
 
-```
-🎨 **3 Pilihan Gaya Desain**
-
-Karena Kakak belum punya referensi, saya siapkan 3 pilihan gaya. Pilih yang paling cocok dengan bisnis Kakak:
-
----
-
-**1️⃣ Minimalis & Bersih**
-- Warna: Putih, abu-abu lembut, aksen biru atau hijau
-- Gaya: Banyak ruang kosong (white space), clean, fokus ke konten
-- Navigasi: Sederhana dan intuitif
-- Cocok untuk: Bisnis yang ingin kesan profesional dan rapi
-- Inspirasi: Seperti tampilan Google Workspace / Notion
-
-**2️⃣ Modern Profesional**
-- Warna: Dark sidebar, konten terang, aksen warna brand
-- Gaya: Dashboard dengan card, grafik, dan statistik
-- Navigasi: Sidebar dengan icon dan label
-- Cocok untuk: Bisnis yang butuh banyak data dan monitoring
-- Inspirasi: Seperti tampilan admin panel modern
-
-**3️⃣ Ramah & Colorful untuk UMKM**
-- Warna: Warna-warni cerah tapi harmonis, background terang
-- Gaya: Rounded corners, icon besar, tombol jelas
-- Navigasi: Bottom tab (mobile) atau top tab (desktop)
-- Cocok untuk: Bisnis yang tim-nya tidak terlalu melek teknologi
-- Inspirasi: Seperti tampilan aplikasi kasir mobile
-
----
-
-Kakak suka yang mana? Atau mau kombinasi dari beberapa gaya? 😊
+```json
+{
+  "questions": [
+    {
+      "question": "Pilih gaya desain yang paling cocok untuk bisnis Kakak:",
+      "options": [
+        "(Recommended) Ramah & Colorful untuk UMKM (rounded, cerah, tombol besar, cocok untuk kasir)",
+        "Minimalis & Bersih (putih, rapi, banyak white space, gaya Notion/Google)",
+        "Modern Profesional (sidebar gelap, statistik card, dashboard admin)"
+      ],
+      "is_multi_select": false
+    }
+  ]
+}
 ```
 
 ## Aturan Analisis

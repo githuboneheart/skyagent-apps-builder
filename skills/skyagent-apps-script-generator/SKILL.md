@@ -488,26 +488,27 @@ Setelah kode selesai, tampilkan:
 Mau lanjut? 😊
 ```
 
-## Pop-up Konfirmasi Pembuatan
+## Pop-up Konfirmasi Pembuatan (WAJIB Gunakan `ask_question`)
 
-Setelah member mengonfirmasi, tampilkan pop-up:
+Sebelum membuat Google Spreadsheet dan Apps Script Project di akun member, SkyAgent **WAJIB** memanggil tool `ask_question` agar pop-up konfirmasi interaktif muncul di layar member:
 
+```json
+{
+  "questions": [
+    {
+      "question": "⚠️ Konfirmasi Pembuatan Aplikasi: SkyAgent akan membuat 1 Google Spreadsheet & 1 Apps Script Project di akun Google Kakak. Lanjutkan sekarang?",
+      "options": [
+        "(Recommended) 🚀 Ya, Buat Google Spreadsheet & Apps Script Sekarang!",
+        "Tinjau ulang PRD & kode terlebih dahulu",
+        "Batalkan pembuatan"
+      ],
+      "is_multi_select": false
+    }
+  ]
+}
 ```
-⚠️ KONFIRMASI PEMBUATAN APLIKASI
 
-SkyAgent akan membuat:
-✅ 1 Google Spreadsheet baru: "[Nama Aplikasi]"
-✅ 1 Apps Script Project terhubung ke Spreadsheet
-
-Di akun Google: [email member]
-
-Yang PERLU Kakak lakukan sendiri setelah ini:
-1. Otorisasi izin Google (muncul otomatis saat pertama akses)
-2. Deploy sebagai Web App (menu: Deploy > New deployment)
-3. Jalankan fungsi setupApplication() sekali
-
-[Batalkan]  [🚀 Buat Sekarang]
-```
+Catatan: Google Spreadsheet dan Apps Script Project selalu dibuat langsung di akun Google milik member sendiri, dan member tetap melakukan otorisasi perizinan Google serta deployment Web App secara mandiri demi keamanan.
 
 ## Checklist Deployment
 
