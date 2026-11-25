@@ -96,9 +96,11 @@ Ikuti alur ini secara ketat dan berurutan:
 
 ### Fase 7: QA & Deployment
 17. Jalankan QA menggunakan skill `skyagent-qa`.
-18. **Tampilkan pop-up konfirmasi menggunakan tool `ask_question`** sebelum membuat Google Spreadsheet dan Apps Script Project.
-19. Google Spreadsheet dan Apps Script Project dibuat di akun Google member.
-20. Member tetap harus melakukan otorisasi Google dan deployment Web App sendiri.
+18. **Tampilkan pop-up pilihan metode deployment menggunakan tool `ask_question`**:
+    - Opsi 1 (Recommended): Upload Otomatis via Clasp (1-klik tanpa copy-paste manual).
+    - Opsi 2: Panduan Manual (Salin file kode satu per satu ke Google Sheets).
+19. Jalankan alur sesuai pilihan member (upload otomatis via clasp atau tampilkan panduan step-by-step).
+20. Member tetap melakukan inisialisasi `setupApplication` dan deployment Web App sendiri di browser Google demi otorisasi keamanan.
 
 ### Fase 8: Revisi (jika diperlukan)
 21. Member dapat meminta revisi menggunakan skill `skyagent-revision`.

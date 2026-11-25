@@ -488,19 +488,19 @@ Setelah kode selesai, tampilkan:
 Mau lanjut? 😊
 ```
 
-## Pop-up Konfirmasi Pembuatan (WAJIB Gunakan `ask_question`)
+## Pop-up Pilihan Metode Deployment (WAJIB Gunakan `ask_question`)
 
-Sebelum membuat Google Spreadsheet dan Apps Script Project di akun member, SkyAgent **WAJIB** memanggil tool `ask_question` agar pop-up konfirmasi interaktif muncul di layar member:
+Setelah seluruh file kode selesai di-generate dan lolos QA, SkyAgent **WAJIB** memanggil tool `ask_question` untuk memberikan pilihan metode deployment kepada member:
 
 ```json
 {
   "questions": [
     {
-      "question": "⚠️ Konfirmasi Pembuatan Aplikasi: SkyAgent akan membuat 1 Google Spreadsheet & 1 Apps Script Project di akun Google Kakak. Lanjutkan sekarang?",
+      "question": "🎉 Kode aplikasi telah selesai dibuat & lulus QA 100%! Bagaimana Kakak ingin menghubungkannya ke akun Google?",
       "options": [
-        "(Recommended) 🚀 Ya, Buat Google Spreadsheet & Apps Script Sekarang!",
-        "Tinjau ulang PRD & kode terlebih dahulu",
-        "Batalkan pembuatan"
+        "(Recommended) ⚡ Upload Otomatis via Clasp (Praktis, 1-klik upload tanpa copy-paste manual)",
+        "📋 Panduan Manual (Salin file kode satu per satu ke Google Sheets)",
+        "🔍 Tinjau ulang file kode & PRD terlebih dahulu"
       ],
       "is_multi_select": false
     }
@@ -508,29 +508,58 @@ Sebelum membuat Google Spreadsheet dan Apps Script Project di akun member, SkyAg
 }
 ```
 
-Catatan: Google Spreadsheet dan Apps Script Project selalu dibuat langsung di akun Google milik member sendiri, dan member tetap melakukan otorisasi perizinan Google serta deployment Web App secara mandiri demi keamanan.
+---
 
-## Checklist Deployment
+### Alur Jika Memilih Opsi 1: ⚡ Upload Otomatis via Clasp
 
-Setelah pembuatan, berikan checklist:
+1. **Pastikan API Google Apps Script Aktif (Hanya 1x Seumur Hidup)**:
+   - Instruksikan member membuka [script.google.com/home/usersettings](https://script.google.com/home/usersettings) dan pastikan toggle **"Google Apps Script API"** dalam posisi **ON**.
+
+2. **Login Akun Google (Hanya 1x Seumur Hidup)**:
+   - Jika belum login, jalankan:
+     `npx @google/clasp login`
+     (atau gunakan path Node Laragon jika ada: `& "C:\laragon\bin\nodejs\node-v24\npx.cmd" @google/clasp login`).
+   - Browser akan terbuka otomatis, member login dengan akun Google-nya dan klik "Allow".
+
+3. **Buat & Upload Project Otomatis**:
+   - Jalankan perintah pembuatan proyek:
+     `npx @google/clasp create --type sheets --title "[Nama Aplikasi]"`
+   - Upload seluruh file:
+     `npx @google/clasp push --force`
+   - Buka project:
+     `npx @google/clasp open` (atau berikan link editor dan link Google Spreadsheet yang terbuat).
+
+4. **Instruksi Akhir Member (2 Klik Saja di Browser)**:
+   - Klik **Run** pada fungsi `setupApplication()` untuk inisialisasi sheet database & beri izin Google.
+   - Klik **Deploy** > **New deployment** > **Web app** (Access: Anyone) untuk mendapatkan link aplikasi Web kasir.
+
+---
+
+### Alur Jika Memilih Opsi 2: 📋 Panduan Manual (Copy-Paste)
+
+Tampilkan panduan langkah demi langkah yang ramah:
+
+1. Buka spreadsheet baru di **[sheets.new](https://sheets.new)** dan beri nama sesuai aplikasi.
+2. Klik menu **Extensions (Ekstensi)** > **Apps Script**.
+3. Buat file `.gs` dan `.html` di editor Apps Script sesuai daftar file proyek yang dibuat.
+4. Salin isi masing-masing file dari folder proyek lokal ke editor. (Untuk `appsscript.json`, centang *"Show appsscript.json manifest file in editor"* di Project Settings ⚙️).
+5. Pilih fungsi `setupApplication()` lalu klik tombol **Run** (izinkan akses Google).
+6. Klik tombol biru **Deploy** > **New deployment** > **Web app** > Atur **Who has access: Anyone** > Klik **Deploy**.
+7. Salin URL Web App dan buka di browser HP/Laptop kasir.
+
+---
+
+### Checklist Deployment (Langkah Terakhir untuk Kedua Metode)
 
 ```
 📋 **Checklist Deployment**
 
-Ikuti langkah-langkah ini untuk menjalankan aplikasi:
-
-□ 1. Buka Google Spreadsheet yang sudah dibuat
-□ 2. Klik menu Extensions > Apps Script
-□ 3. Pastikan semua file sudah ada di editor
-□ 4. Jalankan fungsi setupApplication() (menu: Run > setupApplication)
-□ 5. Berikan izin yang diminta Google (klik Advanced > Go to [app])
-□ 6. Deploy sebagai Web App:
-      - Menu: Deploy > New deployment
-      - Type: Web app
-      - Execute as: Me
-      - Who has access: Anyone
-□ 7. Copy URL Web App
-□ 8. Buka URL di browser — aplikasi siap digunakan! 🎉
+□ 1. Buka Google Spreadsheet & Apps Script yang sudah disiapkan
+□ 2. Jalankan fungsi setupApplication() (menu: Run > setupApplication)
+□ 3. Berikan izin yang diminta Google (Review permissions > Advanced > Go to [app])
+□ 4. Deploy sebagai Web App (Deploy > New deployment > Web app > Access: Anyone)
+□ 5. Copy URL Web App dan siap digunakan! 🎉
+```
 
 **Login default:**
 - Email: admin@example.com
