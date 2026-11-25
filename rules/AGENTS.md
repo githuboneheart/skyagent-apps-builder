@@ -35,6 +35,9 @@
 - **DILARANG menggunakan emoji OS sebagai ikon utama UI** (seperti `🏷️`, `📜`, `🍲`, `📊`, `⚙️`, `🚪`, `🚀` pada menu/sidebar/tombol).
 - **SELALU gunakan Icon SVG Vector modern** (gaya outline minimalis ala Lucide/Heroicons/Tabler) yang tajam, rapi, dan konsisten di semua perangkat (HP & PC).
 - **Halaman Login Wajib Fullscreen & Terkunci (Auth Wall)**: Jika aplikasi memiliki sistem login, sidebar, navbar, bottom bar, dan menu aplikasi HARUS disembunyikan total sebelum user berhasil login (`body.is-guest`). User tidak boleh bisa mengintip atau mengeklik menu aplikasi sebelum login!
+- **Pemisahan Layout Desktop & Mobile yang Ketat**:
+  - *Di Layar Desktop (> 992px)*: HANYA tampilkan Sidebar navigasi kiri dan panel keranjang kanan. DILARANG KERAS memunculkan navbar bawah (bottom navigation) atau floating cart bar di layar desktop!
+  - *Di Layar Mobile (HP)*: Sembunyikan sidebar kiri dan panel kanan total. Tampilkan layout 2-kolom responsif, top header ringkas, dan bottom nav dengan padding bawah yang cukup (140px) agar konten tidak tertutup bar bawah.
 - **Batasan Meta Tag Apps Script**: Pada fungsi `doGet()` di `Code.gs`, HANYA gunakan `.addMetaTag('viewport', 'width=device-width, initial-scale=1.0')`. DILARANG menambahkan meta tag lain seperti `theme-color` karena akan memicu error fatal di Google Apps Script.
 
 ## Referensi UI
