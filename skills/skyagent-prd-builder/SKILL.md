@@ -35,8 +35,9 @@ Sebelum membuat PRD, pastikan sudah ada:
 
 **Nama Aplikasi:** [nama]
 **Jenis:** [POS / Absensi / Booking / Custom]
-**Platform:** Google Apps Script + Google Spreadsheet
-**Deployment:** Google Web App
+**Platform:** [Google Apps Script + Google Spreadsheet] ATAU [Laravel (PHP + MySQL di Laragon)]
+**Frontend Stack (jika Laravel):** [Blade + Tailwind CSS / Livewire / Inertia + Vue / REST API]
+**Deployment:** [Google Web App via Clasp] ATAU [Laragon c:\laragon\www\<projek> & cPanel]
 **Bahasa UI:** Indonesia
 
 [Deskripsi singkat 2-3 kalimat tentang apa aplikasi ini dan untuk siapa]
@@ -140,9 +141,11 @@ flowchart TD
 
 ---
 
-## 10. Struktur Google Sheet
+## 10. Struktur Database (Google Sheet atau MySQL Relasional)
 
-### Sheet: [Nama Sheet]
+### Opsi A: Jika Menggunakan Google Apps Script (Struktur Google Sheet)
+
+#### Sheet: [Nama Sheet]
 **Fungsi:** [deskripsi]
 
 | Kolom | Nama | Tipe Data | Validasi | Keterangan |
@@ -154,14 +157,21 @@ flowchart TD
 **Relasi:** [hubungan dengan sheet lain]
 **Format khusus:** [format angka, tanggal, dll]
 
-(Ulangi untuk setiap sheet)
+### Opsi B: Jika Menggunakan Laravel (Skema Tabel Database MySQL)
 
-### Daftar Semua Sheet
+#### Tabel: [nama_tabel]
+**Model:** `App\Models\[NamaModel]` | **Migration:** `create_[nama_tabel]_table`
 
-| No | Nama Sheet | Fungsi | Jumlah Kolom | Relasi |
-|----|-----------|--------|-------------|--------|
-| 1 | [nama] | [fungsi] | [n] | [relasi] |
-| ... | ... | ... | ... | ... |
+| Kolom | Tipe SQL | Modifiers | Relasi / Foreign Key | Keterangan |
+|-------|----------|-----------|----------------------|------------|
+| id | bigint unsigned | auto_increment, primary | - | Primary Key |
+| [kolom] | string/integer/decimal | nullable/unique/default | [relasi] | [deskripsi] |
+| created_at | timestamp | nullable | - | Waktu buat |
+| updated_at | timestamp | nullable | - | Waktu update |
+
+**Relasi Eloquent:**
+- `hasMany(...)` ke Model [NamaModel]
+- `belongsTo(...)` ke Model [NamaModel]
 
 ---
 

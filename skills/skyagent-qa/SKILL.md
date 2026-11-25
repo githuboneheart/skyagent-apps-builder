@@ -232,6 +232,44 @@ Memeriksa seluruh kode, struktur database, UI, dan kesiapan deployment sebelum a
   - [ ] Batasan dan known issues didokumentasi
 ```
 
+### 8. Validasi Kode Laravel (Khusus Projek Laravel)
+
+```
+📋 QA — Laravel Code & Architecture
+
+□ Database Migrations
+  - [ ] Semua tabel dari PRD bagian 10 dibuat lewat migration
+  - [ ] Foreign key constraints & onDelete cascading terpasang dengan benar
+  - [ ] Indeks pada kolom pencarian sering (misal: order_number, user_id, status)
+  - [ ] Kolom timestamps() dan softDeletes() (jika relevan)
+
+□ Database Seeders
+  - [ ] UserSeeder membuat akun default (admin & kasir)
+  - [ ] Password di-hash menggunakan Hash::make()
+  - [ ] Seeder dapat dijalankan berulang via php artisan db:seed tanpa error duplicate key
+
+□ Eloquent Models
+  - [ ] Properti $fillable atau $guarded terdefinisi untuk mencegah mass assignment vulnerability
+  - [ ] Relasi antar model (hasMany, belongsTo, dll) berfungsi dua arah
+  - [ ] Type casting pada atribut numerik / tanggal ($casts)
+
+□ Controllers & Form Requests
+  - [ ] Validasi input terpusat di Form Request atau $request->validate()
+  - [ ] Tidak ada query database mentah di controller (gunakan Eloquent)
+  - [ ] Error handling & redirect dengan flash message / toast alert
+
+□ Keamanan & Middleware
+  - [ ] Proteksi CSRF di setiap form Blade (@csrf)
+  - [ ] Proteksi rute menggunakan Middleware (auth, role)
+  - [ ] Auth wall: Halaman login fullscreen, menu admin/kasir terkunci sebelum login
+
+□ Tampilan & Frontend (Blade / Livewire / Vue)
+  - [ ] 100% bebas dari emoji OS di seluruh antarmuka
+  - [ ] Seluruh tombol & navigasi menggunakan SVG vector modern
+  - [ ] Responsif di desktop (> 992px) dan smartphone (<= 992px)
+  - [ ] File .env.example tersedia dan siap dijalankan di Laragon
+```
+
 ## Format Laporan QA
 
 ```markdown

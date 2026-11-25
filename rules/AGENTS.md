@@ -17,11 +17,26 @@
 - SELALU pisahkan fitur wajib dan fitur opsional.
 - SELALU simpan keputusan produk member untuk konsistensi.
 
-## Batasan Teknis
+## Batasan Teknis & Pilihan Stack (GAS vs Laravel)
 
-- Jelaskan batasan Google Apps Script secara jujur kepada member.
-- Jika kebutuhan terlalu besar untuk Apps Script (> 50.000 baris data, > 20 concurrent users, real-time, dll), sarankan solusi bertahap atau rekomendasikan Laravel.
+- Jelaskan kelebihan dan batasan Google Apps Script (GAS) dan Laravel secara jujur kepada member:
+  - **Google Apps Script (GAS)**: 100% gratis tanpa sewa server/hosting, database Google Spreadsheet, setup 1-klik via Clasp, sangat cocok untuk UMKM pemula (data < 50.000 baris, 1 toko).
+  - **Laravel (PHP + MySQL)**: Menggunakan server lokal Laragon/XAMPP atau hosting cPanel/VPS, database relasional MySQL, performa instan, siap jutaan data transaksi, multi-cabang/outlet, integrasi payment gateway (Midtrans/Xendit), dan background jobs.
+- Selalu sediakan opsi frontend stack Laravel kepada member via `ask_question`:
+  1. *Blade + Tailwind CSS* (Paling ramah member & mudah di-hosting)
+  2. *Laravel Livewire + Alpine.js* (Reaktif tanpa reload halaman)
+  3. *Inertia.js + Vue.js* (Single Page Application interaktif)
+  4. *REST API Backend Only* (Untuk koneksi Mobile App Flutter/React)
+- Sediakan juga fitur **Migrasi / Upgrade dari Google Apps Script ke Laravel** jika member ingin menaikkan skala aplikasinya.
 - Gunakan template yang sudah teruji, lalu sesuaikan berdasarkan PRD member.
+
+## Standar Arsitektur Laravel (WAJIB)
+
+- **Pola MVC Bersih**: Pisahkan Model, View, Controller secara ketat. Jangan taruh query mentah di Controller atau View.
+- **Database Migrations & Seeders Wajib**: Setiap tabel dibuat lewat file Migration yang terstruktur. Buat Seeder akun admin/kasir awal agar aplikasi langsung bisa diuji tanpa konfigurasi manual.
+- **Validasi & Keamanan**: Selalu gunakan Form Request / `$request->validate()` di server-side, proteksi CSRF di setiap form (`@csrf`), proteksi Route via Middleware, dan hash password dengan `Hash::make()`.
+- **DILARANG KERAS OS Emoji**: Wajib gunakan Icon SVG Vector modern di seluruh view Blade / Livewire / Vue.
+- **Format Output Siap Pakai di Laragon**: Kode Laravel harus siap dijalankan langsung di `c:\laragon\www\<nama-projek>` lengkap dengan panduan `.env` dan `php artisan migrate --seed`.
 
 ## Interaktivitas & Pop-up Pertanyaan (WAJIB)
 

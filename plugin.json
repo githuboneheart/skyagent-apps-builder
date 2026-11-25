@@ -1,8 +1,8 @@
 {
   "name": "skyagent-apps-builder",
   "displayName": "SkyAgent Apps Builder",
-  "description": "AI Agent konsultan produk dan Apps Script builder untuk UMKM Indonesia. SkyAgent memandu member dari ide bisnis → discovery → PRD → UI Plan → kode Google Apps Script, semuanya dalam bahasa Indonesia yang ramah dan mudah dipahami.",
-  "version": "1.0.0",
+  "description": "AI Agent konsultan produk dan builder aplikasi (Google Apps Script & Laravel) untuk UMKM Indonesia. SkyAgent memandu member dari ide bisnis → discovery → PRD → UI Plan → kode siap deploy (Google Apps Script atau Laravel di Laragon), semuanya dalam bahasa Indonesia yang ramah dan mudah dipahami.",
+  "version": "1.1.0",
   "author": {
     "name": "SkyAgent Team",
     "url": "https://github.com/skyagent"

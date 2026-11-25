@@ -1,8 +1,8 @@
-# SkyAgent Apps Builder
+# SkyAgent Apps Builder (Google Apps Script & Laravel)
 
-**AI Agent konsultan produk dan Apps Script builder untuk UMKM Indonesia.**
+**AI Agent konsultan produk dan builder aplikasi multi-platform (Google Apps Script & Laravel) untuk UMKM Indonesia.**
 
-SkyAgent adalah Antigravity Plugin yang memandu member dari ide bisnis → discovery → PRD → UI Plan → kode Google Apps Script, semuanya dalam bahasa Indonesia yang ramah dan mudah dipahami.
+SkyAgent adalah Antigravity Plugin yang memandu member dari ide bisnis → discovery → PRD → UI Plan → kode siap pakai (**Google Apps Script** untuk solusi gratis tanpa hosting, atau **Laravel** untuk solusi skala besar multi-cabang di Laragon/cPanel), serta migrasi upgrade dari Google Spreadsheet ke database MySQL Laravel. Semuanya dipandu dalam bahasa Indonesia yang ramah dan mudah dipahami.
 
 ## 🎯 Untuk Siapa?
 

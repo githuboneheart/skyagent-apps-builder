@@ -86,9 +86,45 @@ Setelah menerima ide awal, panggil tool `ask_question` dengan 3-5 pertanyaan ter
 }
 ```
 
-### Putaran 2: Detail Fitur (Gunakan `ask_question`)
+### Putaran 2: Detail Fitur & Pilihan Stack (Gunakan `ask_question`)
 
-Berdasarkan jawaban putaran 1, panggil tool `ask_question` lagi untuk memperdalam fitur spesifik (maksimal 3-4 pertanyaan). Misalnya tentang diskon, cetak struk, atau laporan keuangan.
+Berdasarkan jawaban putaran 1, panggil tool `ask_question` untuk memperdalam fitur spesifik dan menentukan platform teknologi yang diinginkan member:
+
+```json
+{
+  "questions": [
+    {
+      "question": "Platform teknologi mana yang paling sesuai dengan rencana bisnis Kakak?",
+      "options": [
+        "(Recommended) Google Apps Script (100% Gratis tanpa sewa hosting, simpel di Spreadsheet, cocok untuk 1 toko & UMKM)",
+        "Laravel (PHP + MySQL di Laragon/cPanel) (Untuk bisnis berkembang, multi-cabang, jutaan data, performa tinggi)",
+        "Migrasi / Upgrade Projek Google Apps Script yang sudah ada ke Laravel"
+      ],
+      "is_multi_select": false
+    },
+    {
+      "question": "Jika memilih Laravel, arsitektur frontend mana yang Kakak sukai?",
+      "options": [
+        "(Recommended) Blade + Tailwind CSS (Paling ramah member, ringan, cepat dijalankan di Laragon & cPanel)",
+        "Laravel Livewire + Alpine.js (Modern & reaktif tanpa reload halaman, tetap berbasis Blade)",
+        "Inertia.js + Vue.js (Single Page Application interaktif untuk dashboard enterprise)",
+        "REST API Backend Only (Untuk dihubungkan ke Mobile App Flutter/React)"
+      ],
+      "is_multi_select": false
+    },
+    {
+      "question": "Bagaimana kebutuhan cetak struk nota belanja di kasir?",
+      "options": [
+        "(Recommended) Cetak thermal Bluetooth 58mm/80mm & Cetak standar printer",
+        "Hanya kirim struk digital via WhatsApp (tanpa kertas)",
+        "Cetak thermal Bluetooth, standar printer, & kirim WhatsApp",
+        "Tidak perlu cetak struk (cukup simpan data riwayat)"
+      ],
+      "is_multi_select": false
+    }
+  ]
+}
+```
 
 ### Putaran 3: Konfirmasi Ringkasan & Rekomendasi
 
