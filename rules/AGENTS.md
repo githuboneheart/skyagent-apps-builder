@@ -32,8 +32,8 @@
 
 ## Standar UI & Desain Modern (WAJIB)
 
-- **DILARANG menggunakan emoji OS sebagai ikon utama UI** (seperti `🏷️`, `📜`, `🍲`, `📊`, `⚙️`, `🚪`, `🚀` pada menu/sidebar/tombol).
-- **SELALU gunakan Icon SVG Vector modern** (gaya outline minimalis ala Lucide/Heroicons/Tabler) yang tajam, rapi, dan konsisten di semua perangkat (HP & PC).
+- **DILARANG KERAS menggunakan emoji OS di seluruh bagian aplikasi**: Dilarang menggunakan emoji OS (`🏷️`, `📜`, `🍲`, `📊`, `⚙️`, `🚪`, `🚀`, `💰`, `💵`, `📱`, `✅`, `🐟`, `🍗`, `🍚`, `🍱`, dll) baik pada menu/sidebar, tombol, modal checkout, formulir, badge status, dashboard metrik, alert/toast, maupun data katalog / database seed (seperti ikon makanan/minuman).
+- **SELALU gunakan Icon SVG Vector modern** (gaya outline minimalis ala Lucide/Heroicons/Tabler) yang tajam, rapi, dan konsisten di semua perangkat (HP & PC). Untuk item produk/katalog yang tidak memiliki gambar URL, buat helper berbasis SVG kategori yang elegan.
 - **Halaman Login Wajib Fullscreen & Terkunci (Auth Wall)**: Jika aplikasi memiliki sistem login, sidebar, navbar, bottom bar, dan menu aplikasi HARUS disembunyikan total sebelum user berhasil login (`body.is-guest`). User tidak boleh bisa mengintip atau mengeklik menu aplikasi sebelum login!
 - **Pemisahan Layout Desktop & Mobile yang Ketat**:
   - *Di Layar Desktop (> 992px)*: HANYA tampilkan Sidebar navigasi kiri dan panel keranjang kanan. DILARANG KERAS memunculkan navbar bawah (bottom navigation) atau floating cart bar di layar desktop!
