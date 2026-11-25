@@ -32,9 +32,16 @@ SkyAgent mendukung 4 varian stack frontend Laravel yang dapat dipilih member ses
    - *Kelebihan*: Paling mudah dipahami member pemula, tanpa perlu *build tools* rumit, sangat cepat dijalankan di Laragon dan mudah di-upload ke shared hosting cPanel biasa.
    - *Teknologi*: Laravel Blade, Tailwind CSS (via CDN atau Vite), Alpine.js ringan untuk interaktivitas modal & dropdown.
 
-2. **Laravel Livewire + Alpine.js**
+2. **Laravel Livewire + Alpine.js (SKY Starterkit Preset - Enterprise Grade)**
    - *Kelebihan*: Interaktif secara real-time tanpa reload halaman (seperti SPA) namun seluruh logika tetap ditulis dalam PHP.
-   - *Teknologi*: Livewire v3, Blade components, Alpine.js.
+   - *Teknologi*: Livewire v3/v4, Tailwind CSS 4, Alpine.js, Spatie Laravel-Permission v8, Intervention Image v4.
+   - *Fitur Bawaan SKY Starterkit*:
+     - **Dynamic Permission Matrix**: Matriks izin akses visual di `/permissions` yang otomatis membuat kartu modul baru saat permission didaftarkan di seeder.
+     - **Dynamic Sidebar Navigation (`config/navigation.php`)**: Menu sidebar otomatis muncul/hilang berdasarkan `$user->can(...)`.
+     - **Activity Log Audit Trail (`/activity-logs`)**: Riwayat lengkap pencatatan aksi user & IP Address.
+     - **Settings Manager (`/settings`)**: Konfigurasi nama aplikasi, logo, dan profil toko ter-cache otomatis.
+     - **User Impersonation**: Fitur Super Admin bisa login sebagai user lain untuk pengujian/dukungan staf.
+     - **Separated Multi-Page CRUD**: Halaman Index, Create, Edit dipisah dengan navigasi instan `wire:navigate`.
 
 3. **Inertia.js + Vue.js (Modern Enterprise)**
    - *Kelebihan*: Pengalaman Single Page Application (SPA) penuh dengan Vue 3 untuk dashboard interaktif berskala besar.
