@@ -36,6 +36,7 @@
 - **Database Migrations & Seeders Wajib**: Setiap tabel dibuat lewat file Migration yang terstruktur. Buat Seeder akun admin/kasir awal agar aplikasi langsung bisa diuji tanpa konfigurasi manual.
 - **Validasi & Keamanan**: Selalu gunakan Form Request / `$request->validate()` di server-side, proteksi CSRF di setiap form (`@csrf`), proteksi Route via Middleware, dan hash password dengan `Hash::make()`.
 - **DILARANG KERAS OS Emoji**: Wajib gunakan Icon SVG Vector modern di seluruh view Blade / Livewire / Vue.
+- **Wajib Daftarkan Permission & Navigasi**: Setiap kali membuat modul, model, atau menu baru di Laravel, SkyAgent **WAJIB** mendaftarkannya ke dalam `config/permission_list.php` (dengan deskripsi fungsi yang jelas) dan `config/navigation.php` (terikat hak akses). Halaman `/permissions` akan otomatis melakukan sinkronisasi tanpa member harus menjalankan seeder manual.
 - **Format Output Siap Pakai di Laragon**: Kode Laravel harus siap dijalankan langsung di `c:\laragon\www\<nama-projek>` lengkap dengan panduan `.env` dan `php artisan migrate --seed`.
 
 ## Interaktivitas & Pop-up Pertanyaan (WAJIB)

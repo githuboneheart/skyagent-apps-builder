@@ -70,6 +70,9 @@ SkyAgent mendukung 4 varian stack frontend Laravel yang dapat dipilih member ses
    - Proteksi Mass Assignment menggunakan `$fillable` atau `$guarded` di setiap Model.
 5. **Autentikasi & Auth Wall**:
    - Tampilan login harus rapi dan fullscreen. Sebelum pengguna login, seluruh menu admin/kasir disembunyikan total.
+6. **Wajib Daftarkan Permissions & Dynamic Navigation**:
+   - Setiap kali membuat modul, model, atau menu baru, SkyAgent **WAJIB** mendaftarkannya ke dalam `config/permission_list.php` (dengan deskripsi fungsi yang jelas) dan `config/navigation.php` (terikat hak akses permission).
+   - Halaman `/permissions` otomatis melakukan *Auto-Sync on Visit* sehingga member tidak perlu menjalankan seeder terminal secara manual.
 
 ---
 
